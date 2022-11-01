@@ -1,0 +1,99 @@
+const asyncHandler = require("express-async-handler");
+const BlogPost = require("../modelsforblog/BlogPost");
+
+// domain/api/blogs/blog/:blogId
+const getblog = asyncHandler(async (req, res) => {
+  try {
+    const blog = await BlogPost.findOne({ "postid": req.params.blogId });
+    res.json(blog);
+  } catch (error) {
+    res.status(400);
+    throw new Error(error.message);
+  }
+});
+
+// domain/api/blogs/createblog
+const createBlog = asyncHandler(async (req, res) => {
+  const {
+    title,
+    category,
+    date,
+    author,
+    duration,
+    shares,
+    postid,
+    thumbnail,
+    intro,
+    tableofcontent,
+    maincontent,
+    authorbio,
+    authorimg,
+    relatedposts,
+    socials,
+  } = req.body;
+
+  if (
+    !title ||
+    !category ||
+    !date ||
+    !author ||
+    !duration ||
+    !shares ||
+    !postid ||
+    !thumbnail ||
+    !intro ||
+    !tableofcontent ||
+    !maincontent ||
+    !authorbio ||
+    !authorimg ||
+    !relatedposts ||
+    !socials
+  ) {
+    res.status(400);
+    throw new Error("Please enter all the fields");
+  }
+
+  const blog = await BlogPost.create({
+    title,
+    category,
+    date,
+    author,
+    duration,
+    shares,
+    postid,
+    thumbnail,
+    intro,
+    tableofcontent,
+    maincontent,
+    authorbio,
+    authorimg,
+    relatedposts,
+    socials,
+  });
+
+  if (blog) {
+    res.status(201).json({
+      _id: blog._id,
+      title: blog.title,
+      category: blog.category,
+      date: blog.date,
+      author: blog.author,
+      duration: blog.duration,
+      shares: blog.shares,
+      postid: blog.postid,
+      thumbnail: blog.thumbnail,
+      intro: blog.intro,
+      tableofcontent: blog.tableofcontent,
+      maincontent: blog.maincontent,
+      authorbio: blog.authorbio,
+      authorimg: blog.authorimg,
+      relatedposts: blog.relatedposts,
+      socials: blog.socials,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Failed to create the blog");
+  }
+});
+
+module.exports = { getblog, createBlog };
