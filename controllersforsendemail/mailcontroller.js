@@ -41,19 +41,13 @@ function send_mail(recipient, otpCode) {
 function get_html_message(otp) {
   return `
   <div style="text-align: center;">
-      <img
-        style="width: 150px; min-width: 120px; display: block; margin-left: auto; margin-right: auto;"
-        src="https://blog203.vercel.app/static/media/logo.f744d5df74531c5c5655.png"
-        alt="logos"
-      />
-     <h1 style="margin-top: 50px; color: black;">Welcome</h1>
-     <h3 style="color: black;">Use the verification code below to subscribe my newsletter</h3>
+     <h1 style="margin-top: 50px; color: black;">Subscribe!</h1>
+     <h3 style="color: black;">Use the verification code below to subscribe Abhishek Shukla's newsletter</h3>
      <h1 style="font-size: 50px; border: 2px solid black; color: black;">${otp}</h1>
 
      <div style="background: black; padding: 20px;">
-        <img style="width: 120px; border-radius: 50%;" src="https://blog203.vercel.app/static/media/profilePic.e1c1d3538f79c1923926.jpg" alt="profile">
         <h2 style="color: white;">Abhishek Shukla | Frontend developer</h2>
-        <a style="text-decoration: none; color: white; font-size: 20px;" href="https://blog203.vercel.app/blog/testing">abhishekshukla.com</a>
+        <a style="text-decoration: none; color: white; font-size: 20px;" href="https://shuklaabhishek.com">shuklaabhishek.com</a>
      </div>
     </div>
     `;
