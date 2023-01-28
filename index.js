@@ -33,7 +33,7 @@ const server = app.listen(process.env.PORT || port, console.log(`server started 
 const io = require('socket.io')(server , {
   pingTimeout: 60000,
   cors: {
-      origin: "https://talk-a-tive.netlify.app",
+      origin: "https://talk101.vercel.app",
   },
 })
 

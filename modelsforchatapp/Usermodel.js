@@ -5,11 +5,6 @@ const userSchema = mongoose.Schema(
   {
     name: { type: "String", required: true },
     email: { type: "String", unique: true, required: true },
-    rollNo: { type: "String", required: true },
-    prnNo: { type: "String", required: true },
-    year: { type: "String", required: true },
-    department: { type: "String", required: true },
-    division: { type: "String", required: true },
     phonenumber: { type: "String", unique: true, required: true },
     password: { type: "String", required: true },
     pic: {

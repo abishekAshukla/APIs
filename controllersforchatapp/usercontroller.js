@@ -11,11 +11,6 @@ const registerUser = asyncHandler(async (req, res) => {
     phonenumber,
     password,
     pic,
-    rollNo,
-    prnNo,
-    year,
-    department,
-    division,
   } = req.body;
 
   if (!name || !email || !phonenumber || !password) {
@@ -36,11 +31,6 @@ const registerUser = asyncHandler(async (req, res) => {
     phonenumber,
     password,
     pic,
-    rollNo,
-    prnNo,
-    year,
-    department,
-    division,
   });
 
   if (user) {
@@ -50,11 +40,6 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       phonenumber: user.phonenumber,
       pic: user.pic,
-      rollNo: user.rollNo,
-      prnNo: user.prnNo,
-      year: user.year,
-      department: user.department,
-      division: user.division,
       token: generateToken(user._id),
     });
   } else {
